@@ -7,5 +7,7 @@ package myClass_01;
 public class git_class {
     public static void main(String[] args) {
         System.out.println("test-git");
+        System.out.println("test-pull");
+        
     }
 }
