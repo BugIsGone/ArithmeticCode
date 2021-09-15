@@ -73,7 +73,7 @@ public class class01_summary {
     }
 
     /*
-    交换操作2（初级版）
+    交换操作2（高级版）
     [注意事项]：1.该交换方式中，i和j必须是不一样的，否则会造成数组中该元素被修改成0
      */
     private static void swap2(int[] arr, int i, int j) {
@@ -101,18 +101,16 @@ public class class01_summary {
     //bubbleSort
     private void bubblesort(int[] arr){
         if(arr.length < 2 || arr == null) return;
-        //pattern 1：先排好前面的
-        for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = arr.length - i - 1; j >= 0; j--){
-                if (arr[j] > arr[j + 1]){
-                    swap1(arr, j, j + 1);
-                }
-            }
-        }
-        //pattern 2：先排好后面的
+        //pattern：先排好后面的
         for (int e = arr.length - 1; e > 0 ; e--) {
             for (int i = 0; i < e; i++) {
                 if (arr[i] > arr[i + 1]) swap1(arr, i, i + 1);
+            }
+        }
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j + 1] < arr[j])
+                    swap1(arr, j, j + 1);
             }
         }
     }

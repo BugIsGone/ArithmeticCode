@@ -14,9 +14,9 @@ public class Code_04_QuickSort {//快排
 	public static void quickSort(int[] arr, int l, int r) {
 		if (l < r) {
 			swap(arr, l + (int) (Math.random() * (r - l + 1)), r);
-			int[] p = partition(arr, l, r);
-			quickSort(arr, l, p[0] - 1);//不懂
-			quickSort(arr, p[1] + 1, r);//不懂
+			int[] p = partition(arr, l, r);//p数组只有两个，[l,r]之间都是相等的，所以[l,r]之外需要重新排序
+			quickSort(arr, l, p[0] - 1);//
+			quickSort(arr, p[1] + 1, r);//
 		}
 	}
 
