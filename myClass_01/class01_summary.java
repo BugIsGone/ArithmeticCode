@@ -101,12 +101,13 @@ public class class01_summary {
     //bubbleSort
     private void bubblesort(int[] arr){
         if(arr.length < 2 || arr == null) return;
-        //pattern：先排好后面的
+        //pattern：先排好后面的1
         for (int e = arr.length - 1; e > 0 ; e--) {
             for (int i = 0; i < e; i++) {
                 if (arr[i] > arr[i + 1]) swap1(arr, i, i + 1);
             }
         }
+        //pattern2:先排好后面的2
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = 0; j < arr.length - i - 1; j++) {
                 if (arr[j + 1] < arr[j])
