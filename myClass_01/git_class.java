@@ -9,5 +9,6 @@ public class git_class {
         System.out.println("test-git");
         System.out.println("test-pull");
         System.out.println("MyPC push test");
+        System.out.println("try_CPC_push");
     }
 }
