@@ -52,8 +52,21 @@ public class MyCode_04_QuickSort {
 
     private static void quickSort(int[] arr) {
         if (arr == null || arr.length < 2) return;
+        
+        quickSort(arr, 0, arr.length - 1);
+    }
 
+    private static void quickSort(int[] arr, int l, int r) {
+        while (l < r){
+            swap(arr, l + (int)(Math.random() * (r - l + 1), r);
+            int[] p = partition(arr, l ,r);
+            
+        }
+    }
 
+    private static int[] partition(int[] arr, int l, int r) {
+        int less = l - 1;
+        int more = r ;
     }
 
     private static int[] copyArray(int[] arr) {
