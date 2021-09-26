@@ -33,7 +33,9 @@ public class Code_04_QuickSort {//快排
 			}
 		}
 		swap(arr, more, r);
+		//其实这里可以直接返回{ less, more }，但是由于less = l - 1，存在越界的可能，故以{less,more}进行返回
 		return new int[] { less + 1, more };
+
 	}
 
 	public static void swap(int[] arr, int i, int j) {
