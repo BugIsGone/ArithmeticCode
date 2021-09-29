@@ -29,6 +29,7 @@ public class Code_03_HeapSort {
 	public static void heapify(int[] arr, int index, int size) {
 		int left = index * 2 + 1;
 		while (left < size) {
+			//判斷左右結點大小
 			int largest = left + 1 < size && arr[left + 1] > arr[left] ? left + 1 : left;
 			largest = arr[largest] > arr[index] ? largest : index;
 			if (largest == index) {
