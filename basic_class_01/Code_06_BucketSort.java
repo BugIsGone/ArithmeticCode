@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class Code_06_BucketSort {
 
 	// only for 0~200 value
+	// 计数排序
 	public static void bucketSort(int[] arr) {
 		if (arr == null || arr.length < 2) {
 			return;
@@ -13,6 +14,7 @@ public class Code_06_BucketSort {
 		for (int i = 0; i < arr.length; i++) {
 			max = Math.max(max, arr[i]);
 		}
+		//根据最大值范围创建数组
 		int[] bucket = new int[max + 1];
 		for (int i = 0; i < arr.length; i++) {
 			bucket[arr[i]]++;
