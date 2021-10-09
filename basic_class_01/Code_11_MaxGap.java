@@ -11,6 +11,7 @@ public class Code_11_MaxGap {
 		int len = nums.length;
 		int min = Integer.MAX_VALUE;
 		int max = Integer.MIN_VALUE;
+		//获得数组中的最大、最小值
 		for (int i = 0; i < len; i++) {
 			min = Math.min(min, nums[i]);
 			max = Math.max(max, nums[i]);
