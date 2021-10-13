@@ -20,7 +20,7 @@ class ArrayStack {
         }
 
         arr = new Integer[initSize];
-        index = 0 ;
+        index = 0;
     }
 
     private Integer peek() {
@@ -45,5 +45,50 @@ class ArrayStack {
         }
 
         return arr[--index];
+    }
+}
+
+class ArrayQueue {
+    private Integer[] arr;
+    private Integer start;//当前队列的首位
+    private Integer end;//当前队列的末尾
+    private Integer size;
+
+    private void initArrayQueue(int initSize) {
+        if (initSize < 0) {
+            throw new IllegalArgumentException("InitSize is less than 0 !");
+        }
+
+        arr = new Integer[initSize];
+        size = 0;
+        start = 0;
+        end = 0;
+    }
+
+    private Integer peek() {
+        if (size == 0) {
+            return null;
+        }
+
+        return arr[start];
+    }
+
+    private Integer poll() {
+        if (size == 0) {
+            throw new IllegalArgumentException("The queue is empty");
+        }
+        size--;
+        int tmp = start;
+        start = start == arr.length - 1 ? 0 : start++;
+        return arr[tmp];
+    }
+
+    private void push(Integer number) {
+        if (size == arr.length) {
+            throw new IllegalArgumentException("The queue is full");
+        }
+        size++;
+        arr[end] = number;
+        end = end == arr.length - 1 ? 0 : end++;
     }
 }

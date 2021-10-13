@@ -39,24 +39,24 @@ public class Code_01_Array_To_Stack_Queue {
 	public static class ArrayQueue {
 		private Integer[] arr;
 		private Integer size;
-		private Integer first;
-		private Integer last;
+		private Integer start;//队列首位
+		private Integer end;//队列末尾
 
-		public ArrayQueue(int initSize) {
+		public void ArrayQueue(int initSize) {
 			if (initSize < 0) {
 				throw new IllegalArgumentException("The init size is less than 0");
 			}
 			arr = new Integer[initSize];
 			size = 0;
-			first = 0;
-			last = 0;
+			start = 0;
+			end = 0;
 		}
 
 		public Integer peek() {
 			if (size == 0) {
 				return null;
 			}
-			return arr[first];
+			return arr[start];
 		}
 
 		public void push(int obj) {
@@ -64,8 +64,8 @@ public class Code_01_Array_To_Stack_Queue {
 				throw new ArrayIndexOutOfBoundsException("The queue is full");
 			}
 			size++;
-			arr[last] = obj;
-			last = last == arr.length - 1 ? 0 : last + 1;
+			arr[end] = obj;
+			end = end == arr.length - 1 ? 0 : end + 1;
 		}
 
 		public Integer poll() {
@@ -73,8 +73,8 @@ public class Code_01_Array_To_Stack_Queue {
 				throw new ArrayIndexOutOfBoundsException("The queue is empty");
 			}
 			size--;
-			int tmp = first;
-			first = first == arr.length - 1 ? 0 : first + 1;
+			int tmp = start;
+			start = start == arr.length - 1 ? 0 : start + 1;
 			return arr[tmp];
 		}
 	}
