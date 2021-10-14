@@ -9,7 +9,9 @@ public class MyCode_01_ArrayToStackQueue {
 
     }
 }
-
+/*
+数组实现栈
+ */
 class ArrayStack {
     private Integer[] arr;
     private int index;
@@ -47,7 +49,9 @@ class ArrayStack {
         return arr[--index];
     }
 }
-
+/*
+数组实现队列
+ */
 class ArrayQueue {
     private Integer[] arr;
     private Integer start;//当前队列的首位
