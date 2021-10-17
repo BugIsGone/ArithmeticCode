@@ -154,6 +154,8 @@ public class Code_04_DogCatQueue {
 		while (!test.isDogQueueEmpty()) {
 			System.out.println(test.pollDog().getPetType());
 		}
+
+		System.out.println(dog3.getPetType());
 	}
 
 }
