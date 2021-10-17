@@ -1,6 +1,10 @@
 package myClass_03;
 
+import basic_class_03.Code_06_RandomPool;
+
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * @author shapemind
@@ -57,6 +61,7 @@ public class MyCode_06_RandomPool {
             }
         }
 
+
         public K getRandom() {
             if (this.size == 0) {
                 return null;
@@ -68,6 +73,53 @@ public class MyCode_06_RandomPool {
     }
 
     public static void main(String[] args) {
+        Pool<String> pool = new Pool<String>();
+        pool.insert("liang");
+        pool.insert("jie");
+        pool.insert("zu");
+        pool.insert("1");
+        pool.insert("2");
+        pool.insert("3");
+
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("liang",0);
+        map.put("jie",0);
+        map.put("zu",0);
+        map.put("1",0);
+        map.put("2",0);
+        map.put("3",0);
+
+        for (int i = 0; i < 20000; i++) {
+            String element = pool.getRandom();
+            int countElement  = map.get(element) + 1;
+            map.put(element, countElement);
+        }
+
+        Iterator<Map.Entry<String, Integer>> iterator = map.entrySet().iterator();
+        while(iterator.hasNext()) {
+            Map.Entry<String, Integer> next = iterator.next();
+            System.out.println("key = " + next.getKey() + ",value = " + next.getValue());
+        }
+        System.out.println("分隔符");
+        pool.delete("2");
+
+        map.put("liang",0);
+        map.put("jie",0);
+        map.put("zu",0);
+        map.put("1",0);
+        map.put("2",0);
+        map.put("3",0);
+
+        for (int i = 0; i < 20000; i++) {
+            String element = pool.getRandom();
+            map.put(element, map.get(element) + 1);
+        }
+
+        Iterator<Map.Entry<String, Integer>> entryIterator = map.entrySet().iterator();
+        while(entryIterator.hasNext()) {
+            Map.Entry<String, Integer> next = entryIterator.next();
+            System.out.println("key = " + next.getKey() + ",value = " + next.getValue());
+        }
 
     }
 }
