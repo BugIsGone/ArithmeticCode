@@ -1,5 +1,7 @@
 package myClass_03;
 
+import java.util.Stack;
+
 /**
  * @author shapemind
  * @create 2021-10-19 15:30
@@ -8,7 +10,7 @@ package myClass_03;
  * 给定一个链表的头节点head，请判断该链表是否为回文结构。
  * 例如：
  * 1->2->1，返回true。
- * 1->2->2->1，返回true。
+ * 1->2->2->1，返回true。Preferences
  * 15->6->15，返回true。
  * 1->2->3，返回false。
  * 进阶：
@@ -28,6 +30,21 @@ package myClass_03;
  * 3.左右两边进行对比，如果都相同，就是回文
  */
 public class MyCode_11_IsPalindromeList {
+    public static class Node {
+        private int data;
+        private Node node;
+
+        public Node(int value) {
+            this.data = value;
+        }
+    }
+
+    public static boolean isPalindrome1(Node head) {
+        Stack<Node> nodeStack = new Stack<>();
+
+        
+        return true;
+    }
     public static void main(String[] args) {
         
     }
