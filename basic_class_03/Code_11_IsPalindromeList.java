@@ -35,6 +35,8 @@ public class Code_11_IsPalindromeList {
 		if (head == null || head.next == null) {
 			return true;
 		}
+		// 这样设计能够保证stack内元素永远比[right,lastIndex]链表元素要多。因为当cur和right同一个起点出发时，显然易见cur = 2 * right,
+		// 但现在是 cur = 2 (right - 1)， 暗示right的位置应该均比中点大
 		Node right = head.next;
 		Node cur = head;
 		while (cur.next != null && cur.next.next != null) {
