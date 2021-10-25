@@ -62,39 +62,42 @@ public class Code_11_IsPalindromeList {
 		if (head == null || head.next == null) {
 			return true;
 		}
-		Node n1 = head;
-		Node n2 = head;
-		while (n2.next != null && n2.next.next != null) { // find mid node,next.next prevent AIOOBE(数组下标越界异常)
-			n1 = n1.next; // n1 -> mid
-			n2 = n2.next.next; // n2 -> end
+		Node slowPointer = head;
+		Node fastPointer = head;
+		while (fastPointer.next != null && fastPointer.next.next != null) { // find mid node,next.next prevent AIOOBE(数组下标越界异常)
+			slowPointer = slowPointer.next; // n1 -> mid
+			fastPointer = fastPointer.next.next; // n2 -> end
 		}
-		n2 = n1.next; // n2 -> right part first node
-		n1.next = null; // mid.next -> null
+		//更改链表顺序
+		fastPointer = slowPointer.next; // n2 -> right part first node
+		slowPointer.next = null; // mid.next -> null
 		Node n3 = null;
-		while (n2 != null) { // right part convert
-			n3 = n2.next; // n3 -> save next node
-			n2.next = n1; // next of right node convert
-			n1 = n2; // n1 move
-			n2 = n3; // n2 move
+		while (fastPointer != null) { // right part convert
+			n3 = fastPointer.next; // n3 -> save next node
+			fastPointer.next = slowPointer; // next of right node convert
+			slowPointer = fastPointer; // n1 move
+			fastPointer = n3; // n2 move
 		}
-		n3 = n1; // n3 -> save last node
-		n2 = head;// n2 -> left first node
+		//进行比较
+		n3 = slowPointer; // n3 -> save last node
+		fastPointer = head;// n2 -> left first node
 		boolean res = true;
-		while (n1 != null && n2 != null) { // check palindrome
-			if (n1.value != n2.value) {
+		while (slowPointer != null && fastPointer != null) { // check palindrome
+			if (slowPointer.value != fastPointer.value) {
 				res = false;
 				break;
 			}
-			n1 = n1.next; // left to mid
-			n2 = n2.next; // right to mid
+			slowPointer = slowPointer.next; // left to mid
+			fastPointer = fastPointer.next; // right to mid
 		}
-		n1 = n3.next;
+		//进行复位
+		slowPointer = n3.next;
 		n3.next = null;
-		while (n1 != null) { // recover list
-			n2 = n1.next;
-			n1.next = n3;
-			n3 = n1;
-			n1 = n2;
+		while (slowPointer != null) { // recover list
+			fastPointer = slowPointer.next;
+			slowPointer.next = n3;
+			n3 = slowPointer;
+			slowPointer = fastPointer;
 		}
 		return res;
 	}
