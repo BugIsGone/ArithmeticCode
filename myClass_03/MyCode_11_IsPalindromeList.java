@@ -30,20 +30,6 @@ import java.util.Stack;
  * 3.左右两边进行对比，如果都相同，就是回文
  */
 public class MyCode_11_IsPalindromeList {
-    public static class Node {
-        private int data;
-        private Node node;
-
-        public Node(int value) {
-            this.data = value;
-        }
-    }
-
-    public static boolean isPalindrome1(Node head) {
-        Stack<Node> nodeStack = new Stack<>();
-
-        return true;
-    }
     public static void main(String[] args) {
 
     }
@@ -105,19 +91,53 @@ public class MyCode_11_IsPalindromeList {
     }
 
     //This method needs 0(1) extra space
-    public static boolean isPalindromeList3(Node node) {
-        if (node == null && node.next == null) {
-            return true;
+    public static boolean isPalindromeList3(Node head) {
+        /*
+         * 到底head != null 要不要加入判断条件？这个条件是干嘛的？判断输入的Node不满足条件时就退出。那当head = null算不算是
+         * 特殊情况，明显是属于的。而且这种情况就应该返回的true
+         */
+        if (head == null || head.next == null) return true;
+
+        Node slowPointer = head;
+        Node fastPointer = head;
+        while (fastPointer.next != null && fastPointer.next.next != null) {
+            slowPointer = slowPointer.next;
+            fastPointer = fastPointer.next.next;
         }
 
-        Node right = node.next;
-        Node cur = node;
-        while (cur.next != null && cur.next.next != null) {
-            cur = cur.next.next;
-            right = right.next;
+        //改变链表方向
+        fastPointer = slowPointer.next;
+        slowPointer.next = null;
+        Node tmp = null;
+        while (fastPointer != null) {//用一个暂时变量存储fastPointer.next的值
+            tmp = fastPointer.next;
+            fastPointer.next = slowPointer;
+            slowPointer = fastPointer;
+            fastPointer = tmp;
         }
 
-        Node tmp =
-        return true;
+        //进行对比
+        tmp = slowPointer;
+        fastPointer = head;
+        boolean isPalindromeListFlag = true;
+        while (slowPointer.next != null || fastPointer.next != null) {
+            if (slowPointer.value != fastPointer.value) {
+                isPalindromeListFlag = false;
+                break;
+            }
+            slowPointer = slowPointer.next;
+            fastPointer = fastPointer.next;
+        }
+
+        //对比后要进行复位
+        fastPointer = tmp.next;
+        tmp.next = null;
+        while (fastPointer != null) {
+            slowPointer = fastPointer.next;
+            fastPointer.next = tmp;
+            tmp = fastPointer;
+            fastPointer = slowPointer;
+        }
+        return isPalindromeListFlag;
     }
 }
