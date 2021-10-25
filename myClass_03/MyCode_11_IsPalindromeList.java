@@ -42,7 +42,6 @@ public class MyCode_11_IsPalindromeList {
     public static boolean isPalindrome1(Node head) {
         Stack<Node> nodeStack = new Stack<>();
 
-        
         return true;
     }
     public static void main(String[] args) {
