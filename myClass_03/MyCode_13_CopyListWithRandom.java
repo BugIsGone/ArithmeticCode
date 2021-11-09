@@ -1,5 +1,9 @@
 package myClass_03;
 
+import org.omg.CORBA.NO_IMPLEMENT;
+
+import java.util.HashMap;
+
 /**
  * @author shapemind
  * @create 2021-10-26 22:53
@@ -25,5 +29,29 @@ public class MyCode_13_CopyListWithRandom {
         public Node (int data) {
             this.value = data;
         }
+    }
+
+    public static Node copyListWithRand1 (Node head) {
+        if (head == null) return null;
+        HashMap<Node, Node> map = new HashMap<>();
+        Node cur  = head;
+        while (cur != null) {
+            //此时value中缺乏了next和rand的指向
+            map.put(cur, new Node(cur.value));
+            cur = cur.next;
+        }
+        cur = head;
+        while (cur != null) {
+            map.get(cur).rand = map.get(cur.rand);
+            map.get(cur).next = map.get(cur.next);
+            cur = cur.next;
+        }
+        return map.get(head);
+    }
+
+    public static Node copyListWithRand2 (Node head) {
+        if (head == null) return null;
+
+        return null;
     }
 }

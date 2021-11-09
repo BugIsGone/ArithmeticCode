@@ -15,9 +15,9 @@ public class Code_13_CopyListWithRandom {
 	}
 
 	public static Node copyListWithRand1(Node head) {
-		HashMap<Node, Node> map = new HashMap<Node, Node>();
+		HashMap<Node, Node> map = new HashMap<Node, Node>();//为什么要用map？
 		Node cur = head;
-		while (cur != null) {
+		while (cur != null) { //将原先Node拆开来
 			map.put(cur, new Node(cur.value));
 			cur = cur.next;
 		}
