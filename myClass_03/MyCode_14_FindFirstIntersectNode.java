@@ -1,7 +1,6 @@
 package myClass_03;
 
 
-import basic_class_03.Code_13_CopyListWithRandom;
 
 /**
  * @author shapemind
