@@ -1,5 +1,7 @@
 package basic_class_04;
 
+import myClass_04.MyCode_01_MadianQuick;
+
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
@@ -7,8 +9,8 @@ import java.util.PriorityQueue;
 public class Code_01_MadianQuick {
 
 	public static class MedianHolder {
-		private PriorityQueue<Integer> maxHeap = new PriorityQueue<Integer>(new MaxHeapComparator());
-		private PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>(new MinHeapComparator());
+		private PriorityQueue<Integer> maxHeap = new PriorityQueue<>(new MaxHeapComparator());
+		private PriorityQueue<Integer> minHeap = new PriorityQueue<>(new MinHeapComparator());
 
 		private void modifyTwoHeapsSize() {
 			if (this.maxHeap.size() == this.minHeap.size() + 2) {
@@ -48,6 +50,7 @@ public class Code_01_MadianQuick {
 			}
 			Integer maxHeapHead = this.maxHeap.peek();
 			Integer minHeapHead = this.minHeap.peek();
+			//((maxHeapSize + minHeapSize) & 1) == 0 判断当前数组个数是奇数还是偶数
 			if (((maxHeapSize + minHeapSize) & 1) == 0) {
 				return (maxHeapHead + minHeapHead) / 2;
 			}
@@ -106,6 +109,22 @@ public class Code_01_MadianQuick {
 		System.out.println();
 	}
 
+	private static void printMedianHolder(MedianHolder medianHolder) {
+		if (medianHolder == null) System.out.println("The Median is empty!");
+		PriorityQueue<Integer> maxHeapStructure = medianHolder.maxHeap;
+		PriorityQueue<Integer> minHeapStructure = medianHolder.minHeap;
+		System.out.print("maxHeap: ");
+		while(!maxHeapStructure.isEmpty()){
+			System.out.print(maxHeapStructure.poll()+ "\t");
+		}
+		System.out.println();
+		System.out.print("minHeap: ");
+		while(!minHeapStructure.isEmpty()){
+			System.out.print(minHeapStructure.poll()+ "\t");
+		}
+		System.out.println();
+	}
+
 	public static void main(String[] args) {
 		boolean err = false;
 		int testTimes = 200000;
@@ -124,7 +143,6 @@ public class Code_01_MadianQuick {
 			}
 		}
 		System.out.println(err ? "Oops..what a fuck!" : "today is a beautiful day^_^");
-
 	}
 
 }
