@@ -13,7 +13,7 @@ public class Code_05_PreInPosTraversal {
 			this.value = data;
 		}
 	}
-
+	// 先序遍历，中左右，递归版
 	public static void preOrderRecur(Node head) {
 		if (head == null) {
 			return;
@@ -22,7 +22,7 @@ public class Code_05_PreInPosTraversal {
 		preOrderRecur(head.left);
 		preOrderRecur(head.right);
 	}
-
+	// 中序遍历，左中右，递归版
 	public static void inOrderRecur(Node head) {
 		if (head == null) {
 			return;
@@ -31,7 +31,7 @@ public class Code_05_PreInPosTraversal {
 		System.out.print(head.value + " ");
 		inOrderRecur(head.right);
 	}
-
+	// 后序遍历，左右中，递归版
 	public static void posOrderRecur(Node head) {
 		if (head == null) {
 			return;
@@ -101,21 +101,21 @@ public class Code_05_PreInPosTraversal {
 		System.out.println();
 	}
 
-	public static void posOrderUnRecur2(Node h) {
+	public static void posOrderUnRecur2(Node head) {
 		System.out.print("pos-order: ");
-		if (h != null) {
+		if (head != null) {
 			Stack<Node> stack = new Stack<Node>();
-			stack.push(h);
-			Node c = null;
+			stack.push(head);
+			Node curNode = null;
 			while (!stack.isEmpty()) {
-				c = stack.peek();
-				if (c.left != null && h != c.left && h != c.right) {
-					stack.push(c.left);
-				} else if (c.right != null && h != c.right) {
-					stack.push(c.right);
+				curNode = stack.peek();
+				if (curNode.left != null && head != curNode.left && head != curNode.right) {
+					stack.push(curNode.left);
+				} else if (curNode.right != null && head != curNode.right) {
+					stack.push(curNode.right);
 				} else {
 					System.out.print(stack.pop().value + " ");
-					h = c;
+					head = curNode;
 				}
 			}
 		}

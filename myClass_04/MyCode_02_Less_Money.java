@@ -1,5 +1,6 @@
 package myClass_04;
 
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**
@@ -17,7 +18,43 @@ import java.util.PriorityQueue;
  */
 public class MyCode_02_Less_Money {
     public static void main(String[] args) {
-        
+        // solution
+        int[] arr = { 6, 7, 8, 9 };
+        System.out.println(lessMoney(arr));
+
+        int[] arrForHeap = { 3, 5, 2, 7, 0, 1, 6, 4 };
+
+        // minHeap1
+        PriorityQueue<Integer> minHQ1 = new PriorityQueue<>();
+        for (int i = 0; i < arrForHeap.length; i++) {
+            minHQ1.add(arrForHeap[i]);
+        }
+        System.out.print("minHQ1: ");
+        while (!minHQ1.isEmpty()) {
+            System.out.print(minHQ1.poll() + " ");
+        }
+        System.out.println();
+
+        //minHeap2
+        PriorityQueue<Integer> minHQ2 = new PriorityQueue<>(new minHeapComparator());
+        for (int i = 0; i < arrForHeap.length; i++) {
+            minHQ2.add(arrForHeap[i]);
+        }
+        System.out.print("minHQ2: ");
+        while (!minHQ2.isEmpty()) {
+            System.out.print(minHQ2.poll() + " ");
+        }
+        System.out.println();
+
+        //maxHeap
+        PriorityQueue<Integer> maxHQ = new PriorityQueue<>(new maxHeapComparator());
+        for (int i = 0; i < arrForHeap.length; i++) {
+            maxHQ.add(arrForHeap[i]);
+        }
+        System.out.print("maxHQ: ");
+        while (!maxHQ.isEmpty()) {
+            System.out.print(maxHQ.poll() + " ");
+        }
     }
 
     public static int lessMoney(int[] arr) {
@@ -29,12 +66,25 @@ public class MyCode_02_Less_Money {
         }
         int cur = 0;
         int sum = 0;
-        while(pQ.size() != 1) {
+        while(pQ.size() > 1) {
             cur = pQ.poll() + pQ.poll();
             sum += cur;
-            pQ.add(sum);
+            pQ.add(cur);
         }
+        return sum;
+    }
 
-        return 0;
+    public static class minHeapComparator implements Comparator<Integer> {
+        @Override
+        public int compare(Integer o1, Integer o2) {
+            return o1 - o2;
+        }
+    }
+
+    public static class maxHeapComparator implements Comparator<Integer> {
+        @Override
+        public int compare(Integer o1, Integer o2) {
+            return o2 - o1;
+        }
     }
 }
