@@ -1,5 +1,7 @@
 package myClass_04;
 
+import java.util.PriorityQueue;
+
 /**
  * @author shapemind
  * @create 2021-11-23 17:55
@@ -16,5 +18,23 @@ package myClass_04;
 public class MyCode_02_Less_Money {
     public static void main(String[] args) {
         
+    }
+
+    public static int lessMoney(int[] arr) {
+        if (arr.length == 0 || arr == null) throw new IllegalArgumentException("The arr's length is less than 1 or is empty! ");
+
+        PriorityQueue<Integer> pQ = new PriorityQueue<>();
+        for (int i = 0; i < arr.length; i++) {
+            pQ.add(arr[i]);
+        }
+        int cur = 0;
+        int sum = 0;
+        while(pQ.size() != 1) {
+            cur = pQ.poll() + pQ.poll();
+            sum += cur;
+            pQ.add(sum);
+        }
+
+        return 0;
     }
 }
