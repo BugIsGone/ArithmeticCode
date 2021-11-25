@@ -1,8 +1,6 @@
 package myClass_04;
 
-import javax.sound.midi.SoundbankResource;
 import java.util.Stack;
-import java.util.concurrent.ForkJoinWorkerThread;
 
 /**
  * @author shapemind
@@ -25,7 +23,7 @@ public class MyCode_05_PreInPosTraversal {
     //递归：先序遍历，中左右
     public static void preOrderRecur (Node head) {
         if (head == null) {
-            throw new IllegalArgumentException("The args is empty!");
+            return;
         }
 
         System.out.println(head.value + " ");
@@ -36,12 +34,22 @@ public class MyCode_05_PreInPosTraversal {
     //递归：中序遍历，左中右
     public static void inOrderRecur (Node head) {
         if (head == null) {
-            throw new IllegalArgumentException("The args is empty!");
+            return;
         }
 
         inOrderRecur(head.left);
         System.out.println(head.value + " ");
         inOrderRecur(head.right);
+    }
+
+    //递归：后序遍历，左右中
+    public static void posOrderRecur(Node head) {
+        if (head == null) {
+            return;
+        }
+        posOrderRecur(head.left);
+        posOrderRecur(head.right);
+        System.out.println(head.value + " ");
     }
 
     //非递归：先序遍历，中左右
@@ -51,7 +59,7 @@ public class MyCode_05_PreInPosTraversal {
             Stack<Node> nodeStack = new Stack<>();
             nodeStack.add(head);
             while (!nodeStack.isEmpty()){
-                nodeStack.pop();
+                head = nodeStack.pop();
                 System.out.println(head.value + " ");
                 if (head.right != null) {
                     nodeStack.add(head.right);
@@ -82,8 +90,30 @@ public class MyCode_05_PreInPosTraversal {
         }
     }
 
-    //非递归：后序遍历，左右中
+    //非递归：后序遍历1，左右中
     public static void posOrderUnRecur1 (Node head) {
-        if (head != )
+        if (head != null) {
+            System.out.println("posOrderUnRecur1: ");
+            Stack<Node> nodeStack = new Stack<>();
+            Stack<Node> helpStack = new Stack<>();
+            nodeStack.add(head);
+            while(!nodeStack.isEmpty()) {
+                head = nodeStack.pop();
+                helpStack.add(head);
+
+                if (head.left != null) {
+                    helpStack.add(head.left);
+                }
+                if (head.right != null) {
+                    helpStack.add(head.right);
+                }
+            }
+
+            while (!helpStack.isEmpty()) {
+                System.out.println(helpStack.pop().value + " ");
+            }
+        }
     }
+
+    //非递归：后续遍历2，左右中
 }
