@@ -1,6 +1,4 @@
-package testcode;
-
-import java.util.Scanner;
+package draft;
 
 public class Rectangle {
     private int lang;

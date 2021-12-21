@@ -15,8 +15,8 @@ public class Code_04_QuickSort {//快排
 		if (l < r) {
 			swap(arr, l + (int) (Math.random() * (r - l + 1)), r);
 			int[] p = partition(arr, l, r);//p数组只有两个，[l,r]之间都是相等的，所以[l,r]之外需要重新排序
-			quickSort(arr, l, p[0] - 1);//
-			quickSort(arr, p[1] + 1, r);//
+			quickSort(arr, l, p[0]);//
+			quickSort(arr, p[1], r);//
 		}
 	}
 
@@ -32,9 +32,8 @@ public class Code_04_QuickSort {//快排
 				l++;
 			}
 		}
-		swap(arr, more, r);
-		//其实这里可以直接返回{ less, more }，但是由于less = l - 1，存在越界的可能，故以{less,more}进行返回
-		return new int[] { less + 1, more };
+		swap(arr, more++, r);
+		return new int[] { less, more };
 	}
 
 	public static void swap(int[] arr, int i, int j) {

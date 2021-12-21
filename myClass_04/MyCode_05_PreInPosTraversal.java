@@ -76,7 +76,7 @@ public class MyCode_05_PreInPosTraversal {
     public static void inOrderUnRecur (Node head) {
         System.out.println("In-Order: ");
         if (head != null) {
-            Stack<Node> nodeStack = new Stack<Node>;
+            Stack<Node> nodeStack = new Stack<Node>();
             while (!nodeStack.isEmpty() || head != null) {
                 if (head != null) {
                     nodeStack.add(head);

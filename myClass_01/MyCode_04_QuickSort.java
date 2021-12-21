@@ -1,6 +1,8 @@
 package myClass_01;
 
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+
 import java.util.Arrays;
 
 /**
@@ -13,7 +15,7 @@ public class MyCode_04_QuickSort {
         int maxValue = 200;
         int testTime = 1000000;
         boolean isSucceed = true;
-
+        long startTime = System.currentTimeMillis();
         for (int i = 0; i < testTime; i++) {
             int[] arr1 = generateArray(maxSize, maxValue);
             int[] arr2 = copyArray(arr1);
@@ -26,13 +28,14 @@ public class MyCode_04_QuickSort {
                 break;
             }
         }
-
+        long endTime = System.currentTimeMillis();
+        System.out.println("总耗时:" + ((endTime - startTime) / 100) + "s");
         System.out.println(isSucceed ? "Nice!" : "Fucking fucked");
 
-        int[] arr = generateArray(maxSize, maxValue);
-        System.out.println(Arrays.toString(arr));
-        quickSort(arr);
-        System.out.println(Arrays.toString(arr));
+//        int[] arr = generateArray(maxSize, maxValue);
+//        System.out.println(Arrays.toString(arr));
+//        quickSort(arr);
+//        System.out.println(Arrays.toString(arr));
     }
 
     private static boolean isEqual(int[] arr1, int[] arr2) {
@@ -57,7 +60,7 @@ public class MyCode_04_QuickSort {
     }
 
     private static void quickSort(int[] arr, int l, int r) {
-        while (l < r){
+        if (l < r){
             swap(arr, l + (int)(Math.random() * (r - l + 1)), r);
             int[] p = partition(arr, l ,r);
             quickSort(arr, l, p[0] - 1);
@@ -74,7 +77,6 @@ public class MyCode_04_QuickSort {
     private static int[] partition(int[] arr, int l, int r) {
         int less = l - 1;
         int more = r ;
-
         while(l < more){
             if (arr[l] > arr[r]) {
                 swap(arr, --more, l);
@@ -86,7 +88,7 @@ public class MyCode_04_QuickSort {
         }
         swap(arr, more, r);
 
-        return new int[]{less + 1, ++more};
+        return new int[]{less + 1, more};
     }
 
     private static int[] copyArray(int[] arr) {
