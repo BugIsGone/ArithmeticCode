@@ -80,6 +80,7 @@ public class code0001_TwoSum {
         for (int i = 0; i < nums.length; i++) {
 
         }
+        return new int[]{};
     }
 
     //比较器
