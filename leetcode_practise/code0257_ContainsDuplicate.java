@@ -1,8 +1,9 @@
 package leetcode_practise;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Set;
+import java.util.stream.IntStream;
 
 /**
  * @author shapemind
@@ -10,7 +11,8 @@ import java.util.Set;
  */
 public class code0257_ContainsDuplicate {
     public static void main(String[] args) {
-        System.out.println(containsDuplicate2(new int[]{1, 2, 3, 4, 5, 6}));
+        boolean isTrue = containsDuplicate3(new int[]{1, 2, 3, 4});
+        System.out.println(isTrue);
     }
 
     /**
@@ -23,14 +25,15 @@ public class code0257_ContainsDuplicate {
      */
     public static boolean containsDuplicate1(int[] nums) {
         if (nums == null || nums.length < 2) {
-            return true;
+            return false;
         }
 
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
-            Integer hasNumber = map.put(nums[i], i);
-            if (hasNumber != null) {
+            if (map.containsKey(nums[i])) {
                 return true;
+            } else {
+                map.put(nums[i], i);
             }
         }
         return false;
@@ -51,24 +54,52 @@ public class code0257_ContainsDuplicate {
             return false;
         }
     }
+
     /*
     set方法：
-    方法1：判断hashSet的add()是否为true
+    方法1：判断hashSet的add()是否为true —— <最快>
     访法2：判断hashSet的size()和nums.length是否一致
      */
     public static boolean containsDuplicate3(int[] nums) {
-        if (nums == null || nums. length < 2) {
-            return true;
+        if (nums == null || nums.length < 2) {
+            return false;
         }
 
         HashSet<Integer> hashSet = new HashSet<>();
         for (int i = 0; i < nums.length; i++) {
-            if (hashSet.add(nums[i])) {
+            if (!hashSet.add(nums[i])) {
                 return true;
             }
         }
 
         return false;
+    }
+
+    /*
+    思路：先排序，然后相邻两个值不存在相同
+     */
+    public static boolean containsDuplicate4(int[] nums) {
+        if (nums == null || nums.length < 2) {
+            return false;
+        }
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] == nums[i + 1]) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /*
+    思路：利用IntStream进行炫技
+     */
+    public static boolean containsDuplicate5(int[] nums) {
+        if (nums == null || nums.length < 2) {
+            return false;
+        }
+        return IntStream.of(nums).distinct().count() != nums.length;
     }
 
     public static boolean comparator(int[] nums) {
