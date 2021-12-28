@@ -15,8 +15,6 @@ import java.util.PriorityQueue;
  * 但是如果，先把长度60的金条分成30和30，花费60，再把长度30金条分成10和20，花费30，一共花费90铜板。
  *
  * 输入一个数组，返回分割的最小代价。
- *
- * 思路：哈夫曼编码、动态规划、贪心策略
  */
 public class MyCode_02_Less_Money {
     public static void main(String[] args) {

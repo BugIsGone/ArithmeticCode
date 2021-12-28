@@ -8,7 +8,6 @@ import java.util.PriorityQueue;
  * @author shapemind
  * @create 2021-11-24 14:23
  *
- * 贪心问题
  * 输入：
  * 参数1，正数数组costs
  * 参数2，正数数组profits
