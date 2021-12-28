@@ -36,7 +36,7 @@ public class code0257_ContainsDuplicate {
         return false;
     }
 
-    public static boolean containsDuplicate2(int[] nums) {
+     public static boolean containsDuplicate2(int[] nums) {
         if (nums == null || nums.length < 2) {
             return false;
         }
