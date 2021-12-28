@@ -21,8 +21,7 @@ import java.util.PriorityQueue;
  */
 public class MyCode_03_IPO {
     public static void main(String[] args) {
-
-
+        int testTime = 0;
     }
 
     public static class Node {
