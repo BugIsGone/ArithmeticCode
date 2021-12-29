@@ -53,6 +53,12 @@ public class MyCode_05_PreInPosTraversal {
     }
 
     //非递归：先序遍历，中左右
+
+    /**
+     * 思路：使用一个辅助栈,因为对任意子树都是中左右的方式，所以开始时顶点先发进去栈中，判断栈中不为空的时候弹出栈顶，然后再放入右节点，
+     * 然后是左节点
+     * @param head
+     */
     public static void preOrderUnRecur (Node head) {
         System.out.println("Pre-order: ");
         if (head != null) {
@@ -73,6 +79,11 @@ public class MyCode_05_PreInPosTraversal {
     }
 
     //非递归：中序遍历，左中右
+
+    /**
+     * 还是准备一个栈，然后先把左节点压进栈中，当判断head==null时，说明该节点是叶结点，所以就弹出了
+     * @param head
+     */
     public static void inOrderUnRecur (Node head) {
         System.out.println("In-Order: ");
         if (head != null) {
