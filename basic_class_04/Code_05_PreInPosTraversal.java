@@ -40,7 +40,7 @@ public class Code_05_PreInPosTraversal {
 		posOrderRecur(head.right);
 		System.out.print(head.value + " ");
 	}
-
+	// 先序
 	public static void preOrderUnRecur(Node head) {
 		System.out.print("pre-order: ");
 		if (head != null) {
@@ -60,6 +60,7 @@ public class Code_05_PreInPosTraversal {
 		System.out.println();
 	}
 
+	// 中序
 	public static void inOrderUnRecur(Node head) {
 		System.out.print("in-order: ");
 		if (head != null) {
@@ -78,6 +79,7 @@ public class Code_05_PreInPosTraversal {
 		System.out.println();
 	}
 
+	// 后序1
 	public static void posOrderUnRecur1(Node head) {
 		System.out.print("pos-order: ");
 		if (head != null) {
@@ -101,6 +103,7 @@ public class Code_05_PreInPosTraversal {
 		System.out.println();
 	}
 
+	// 后序2
 	public static void posOrderUnRecur2(Node head) {
 		System.out.print("pos-order: ");
 		if (head != null) {

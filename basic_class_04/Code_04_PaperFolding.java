@@ -16,7 +16,7 @@ public class Code_04_PaperFolding {
 	}
 
 	public static void main(String[] args) {
-		int N = 4;
+		int N = 1;
 		printAllFolds(N);
 
 	}

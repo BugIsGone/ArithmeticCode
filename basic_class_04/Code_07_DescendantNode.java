@@ -21,7 +21,7 @@ public class Code_07_DescendantNode {
 			return getLeftMost(node.right);
 		} else {
 			Node parent = node.parent;
-			while (parent != null && parent.left != node) {
+			while (parent != null && parent.left != node) {//这一个的作用是什么？parent.left!=node的作用
 				node = parent;
 				parent = node.parent;
 			}

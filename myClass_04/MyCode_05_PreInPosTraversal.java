@@ -20,7 +20,14 @@ public class MyCode_05_PreInPosTraversal {
         }
     }
 
-    //递归：先序遍历，中左右
+    //
+
+    /**
+     * 递归：先序遍历，中左右
+     * 时间复杂度O(N)
+     * 空间复杂度O(N)
+     * @param head
+     */
     public static void preOrderRecur (Node head) {
         if (head == null) {
             return;
@@ -31,7 +38,12 @@ public class MyCode_05_PreInPosTraversal {
         preOrderRecur(head.right);
     }
 
-    //递归：中序遍历，左中右
+    /**
+     * 递归：中序遍历，左中右
+     * 时间复杂度O(N)
+     * 空间复杂度O(N)
+     * @param head
+     */
     public static void inOrderRecur (Node head) {
         if (head == null) {
             return;
@@ -42,7 +54,12 @@ public class MyCode_05_PreInPosTraversal {
         inOrderRecur(head.right);
     }
 
-    //递归：后序遍历，左右中
+    /**
+     * 递归：后序遍历，左右中
+     * 时间复杂度O(N)
+     * 空间复杂度O(N)
+     * @param head
+     */
     public static void posOrderRecur(Node head) {
         if (head == null) {
             return;
@@ -52,9 +69,10 @@ public class MyCode_05_PreInPosTraversal {
         System.out.println(head.value + " ");
     }
 
-    //非递归：先序遍历，中左右
 
     /**
+     * 非递归：先序遍历，中左右
+     * 时间复杂度：O(N),空间复杂读O(N)
      * 思路：使用一个辅助栈,因为对任意子树都是中左右的方式，所以开始时顶点先发进去栈中，判断栈中不为空的时候弹出栈顶，然后再放入右节点，
      * 然后是左节点
      * @param head
@@ -81,7 +99,8 @@ public class MyCode_05_PreInPosTraversal {
     //非递归：中序遍历，左中右
 
     /**
-     * 还是准备一个栈，然后先把左节点压进栈中，当判断head==null时，说明该节点是叶结点，所以就弹出了
+     * 时间复杂度：O(N),空间复杂读O(N)
+     * 思路：还是准备一个栈，然后先把左节点压进栈中，当判断head==null时，说明该节点是叶结点，所以就弹出了
      * @param head
      */
     public static void inOrderUnRecur (Node head) {
@@ -102,6 +121,12 @@ public class MyCode_05_PreInPosTraversal {
     }
 
     //非递归：后序遍历1，左右中
+
+    /**
+     * 时间复杂度：O(N),空间复杂读O(N)，N是二叉树高度
+     * 思路：基于先序遍历，中左右代码，变成中右左，然后再使用一个help栈，就可以变成左右中
+     * @param head
+     */
     public static void posOrderUnRecur1 (Node head) {
         if (head != null) {
             System.out.println("posOrderUnRecur1: ");

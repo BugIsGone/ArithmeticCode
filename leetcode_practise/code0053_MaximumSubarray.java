@@ -22,7 +22,7 @@ public class code0053_MaximumSubarray {
         }
 
         for (int i = 0; i < nums.length; i++) {
-            int[] subArray = new int[i + 1];
-            
+            int[] subArray = new int[i + 1];}
+        return 0;
     }
 }
