@@ -21,7 +21,7 @@ public class Code_07_DescendantNode {
 			return getLeftMost(node.right);
 		} else {
 			Node parent = node.parent;
-			while (parent != null && parent.left != node) {//这一个的作用是什么？parent.left!=node的作用
+			while (parent != null && parent.left != node) {//node为parent的左孩子节点
 				node = parent;
 				parent = node.parent;
 			}
@@ -80,7 +80,8 @@ public class Code_07_DescendantNode {
 		test = head.right;
 		System.out.println(test.value + " next: " + getNextNode(test).value);
 		test = head.right.right; // 10's next is null
-		System.out.println(test.value + " next: " + getNextNode(test));
+		Node tmp = getNextNode(test);
+		System.out.println(test.value + " next: " + tmp);
 	}
 
 }
