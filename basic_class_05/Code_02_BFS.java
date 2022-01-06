@@ -11,7 +11,7 @@ public class Code_02_BFS {
 			return;
 		}
 		Queue<Node> queue = new LinkedList<>();
-		HashSet<Node> map = new HashSet<>();
+		HashSet<Node> map = new HashSet<>();//avoid printing same node
 		queue.add(node);
 		map.add(node);
 		while (!queue.isEmpty()) {

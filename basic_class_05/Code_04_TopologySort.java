@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class Code_04_TopologySort {
+public class  Code_04_TopologySort {
 
 	// directed graph and no loop
 	public static List<Node> sortedTopology(Graph graph) {
