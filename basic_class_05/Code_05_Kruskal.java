@@ -73,7 +73,7 @@ public class Code_05_Kruskal {
 
 	public static Set<Edge> kruskalMST(Graph graph) {
 		UnionFind unionFind = new UnionFind();
-		unionFind.makeSets(graph.nodes.values());
+		unionFind.makeSets(graph.nodes.values());// 对图的点进行初始化
 		PriorityQueue<Edge> priorityQueue = new PriorityQueue<>(new EdgeComparator());
 		for (Edge edge : graph.edges) {
 			priorityQueue.add(edge);
