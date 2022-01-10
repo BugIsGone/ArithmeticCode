@@ -6,12 +6,22 @@ import java.util.Map.Entry;
 
 // no negative weight
 public class Code_07_Dijkstra {
-
+	/**
+	 * 该方法使用了遍历的方式获得最小值，众所周知遍历取最小值很慢。但是元素可能更新的情景下，这种方法和最小堆的速度差不多，因为最小堆
+	 * 此时要面对元素要更新的问题，同样也是通过遍历的方式取得最小值
+	 * @param head
+	 * @return
+	 */
 	public static HashMap<Node, Integer> dijkstra1(Node head) {
+		// 从head出发到所有点的最小距离
+		// key: 从head出发到大key
+		// value： 从head出发到达key的最小距离
+		// 如果在表中，没有T的记录，含义是从head出发到T这个点的距离为正无穷
 		HashMap<Node, Integer> distanceMap = new HashMap<>();
 		distanceMap.put(head, 0);
 		HashSet<Node> selectedNodes = new HashSet<>();
-
+		// 已经求过距离的节点，存在selectNodes中，以后不再更新
+		// minNode是最小距离且不在selectNodes中
 		Node minNode = getMinDistanceAndUnselectedNode(distanceMap, selectedNodes);
 		while (minNode != null) {
 			int distance = distanceMap.get(minNode);
@@ -53,16 +63,16 @@ public class Code_07_Dijkstra {
 	}
 
 	public static class NodeHeap {
-		private Node[] nodes;
-		private HashMap<Node, Integer> heapIndexMap;
-		private HashMap<Node, Integer> distanceMap;
-		private int size;
+		private Node[] nodes;// 用数组表示堆
+		private HashMap<Node, Integer> heapIndexMap;// node的index是多少，方便从nodes数组中取出对应的node
+		private HashMap<Node, Integer> distanceMap;// 到原节点距离是多少
+		private int size;// 堆的大小
 
 		public NodeHeap(int size) {
 			nodes = new Node[size];
 			heapIndexMap = new HashMap<>();
 			distanceMap = new HashMap<>();
-			this.size = 0;
+			this.size = 0;//因为此时堆没有东西，所以size是0
 		}
 
 		public boolean isEmpty() {
@@ -82,7 +92,7 @@ public class Code_07_Dijkstra {
 			}
 		}
 
-		public NodeRecord pop() {
+		public NodeRecord popMinDistance() {
 			NodeRecord nodeRecord = new NodeRecord(nodes[0], distanceMap.get(nodes[0]));
 			swap(0, size - 1);
 			heapIndexMap.put(nodes[size - 1], -1);
@@ -114,11 +124,11 @@ public class Code_07_Dijkstra {
 			}
 		}
 
-		private boolean isEntered(Node node) {
+		private boolean isEntered(Node node) { // 是否已经进过堆
 			return heapIndexMap.containsKey(node);
 		}
 
-		private boolean inHeap(Node node) {
+		private boolean inHeap(Node node) { // 该点是否已经计算过里原点距离，若计算过其get(node)会置为-1
 			return isEntered(node) && heapIndexMap.get(node) != -1;
 		}
 
@@ -136,7 +146,7 @@ public class Code_07_Dijkstra {
 		nodeHeap.addOrUpdateOrIgnore(head, 0);
 		HashMap<Node, Integer> result = new HashMap<>();
 		while (!nodeHeap.isEmpty()) {
-			NodeRecord record = nodeHeap.pop();
+			NodeRecord record = nodeHeap.popMinDistance();
 			Node cur = record.node;
 			int distance = record.distance;
 			for (Edge edge : cur.edges) {

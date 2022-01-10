@@ -5,6 +5,8 @@ import java.util.*;
 /**
  * @author shapemind
  * @create 2022-01-06 19:26
+ *
+ * Kruskal思想：1.先选边权小的边；2.选边时不能和已选的边形成环
  */
 public class MyCode_05_Kruskal {
     public static class UnionFind {
